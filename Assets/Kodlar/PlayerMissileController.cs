@@ -22,6 +22,11 @@ public class PlayerMissileController : MonoBehaviour
         {
             Instantiate(patlamaPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            if (gameObject != null)
+            {
+                // Do something  
+                Destroy(gameObject);
+            }
         }
     }
 }
