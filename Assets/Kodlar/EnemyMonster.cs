@@ -8,6 +8,8 @@ public class EnemyMonster : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab;
     GameObject[] chest;
 
+    
+
     Vector3 target;
 
   void Start()
@@ -22,6 +24,8 @@ public class EnemyMonster : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         }
+
+
             
     }
 
@@ -34,8 +38,9 @@ public class EnemyMonster : MonoBehaviour
         }
         else if (col.tag == "Explosion")
         {
+            FindObjectOfType<GameController>().AddMissileDestroyedPoints();
             MissileExplode();
-            Destroy(col.gameObject);
+            
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
 
+    private GameController gameController;
     public List<Enemy> enemies = new List<Enemy>();
     public int currWave;
     private int waveValue;
@@ -22,7 +23,9 @@ public class WaveSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = FindObjectOfType<GameController>();
         GenerateWave();
+
     }
 
     // Update is called once per frame
@@ -50,6 +53,9 @@ public class WaveSpawner : MonoBehaviour
             else
             {
                 waveTimer = 0; // if no enemies remain, end wave
+                
+                gameController.ActivateEndOfRoundPanel();
+
             }
         }
         else
@@ -62,7 +68,32 @@ public class WaveSpawner : MonoBehaviour
         {
             currWave++;
             GenerateWave();
+
+            if (currWave > 1)
+            {
+                bool allEnemiesKilled = true;
+                
+                foreach (var enemy in enemies)
+                {
+                    if (enemy.enemyPrefab != null)
+                    {
+                        allEnemiesKilled = false;
+                        break;
+                    }
+                }
+                if (allEnemiesKilled)
+                {
+                    Debug.Log("Round is over! All enemies have been killed.");
+                    gameController.ActivateEndOfRoundPanel();
+                    // Perform any necessary actions or start a new round here
+
+                }
+            }
+            
         }
+        
+            
+        
     }
 
     public void GenerateWave()
@@ -114,3 +145,4 @@ public class Enemy
     public GameObject enemyPrefab;
     public int cost;
 }
+

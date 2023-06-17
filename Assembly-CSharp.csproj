@@ -58,11 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\Kodlar\CursorController.cs" />
     <Compile Include="Assets\Kodlar\TargetTracker.cs" />
+    <Compile Include="Assets\Kodlar\GameController.cs" />
     <Compile Include="Assets\Kodlar\WaveSpawner.cs" />
     <Compile Include="Assets\Kodlar\PlayerMissileController.cs" />
     <Compile Include="Assets\Kodlar\EnemyMonster.cs" />
     <Compile Include="Assets\Kodlar\SelfDestruct.cs" />
-    <Compile Include="Assets\Kodlar\GameController.cs" />
+    <Compile Include="Assets\Kodlar\Chest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
